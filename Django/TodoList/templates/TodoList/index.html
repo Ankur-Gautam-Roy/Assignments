@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <title>My TodoList</title>
+        <link rel="stylesheet" href="TodoList.css">
+       <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    </head>
+
+    <body>
+       
+        <div id = "div1" class="header">
+              <h2 style="text-align:center;"><a href="http://127.0.0.1:8000/">BLINGO-TODO LIST</a></h2>
+
+          </div>
+          <div class ="button">
+            <button style = "margin-left: 40%;" onclick="location.href = 'http://127.0.0.1:8000/addlist'">Add your task!</button>
+          </div>
+          
+
+          
+        <main class="container">
+            <div class="row">
+                  <div class="col">
+                {% for ts in tasks %}
+                    <article class="task">
+                        
+                        <h2>{{ ts.title }}</h2>
+                        <time class="date">
+                            <h5>Deadline: {{ ts.deadline }}</h5>
+                            
+                        </time>
+                        <button class = update>Update</button>
+                        <button class = delete>Delete</button>
+                        
+                    </article>
+                {% endfor %}
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
+
+
+
+
+
+
