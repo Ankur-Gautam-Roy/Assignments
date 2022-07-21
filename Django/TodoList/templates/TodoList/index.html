@@ -17,7 +17,7 @@
 
           </div>
           <div class ="button">
-            <button style = "margin-left: 40%;" onclick="location.href = 'http://127.0.0.1:8000/addlist'">Add your task!</button>
+            <button style :center; onclick="location.href = 'http://127.0.0.1:8000/addlist'">Add your task!</button>
           </div>
           
 
@@ -29,12 +29,21 @@
                     <article class="task">
                         
                         <h2>{{ ts.title }}</h2>
+                        <text class="desc">
+                            Description: {{  ts.description }}</text>
                         <time class="date">
                             <h5>Deadline: {{ ts.deadline }}</h5>
                             
                         </time>
-                        <button class = update>Update</button>
-                        <button class = delete>Delete</button>
+                        <a href="{%url 'updateList' ts.id%}">
+                            <button class = update style = "background-color:yellowgreen">Update</button>
+                        </a>
+                        <a href="{%url 'deleteList' ts.id%}">
+                            <button class = delete id = 'deletebtn' style = "background-color:red">Update</button>
+                        </a>
+                        
+                        
+                      
                         
                     </article>
                 {% endfor %}

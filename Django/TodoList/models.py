@@ -6,6 +6,7 @@ from django.utils import timezone
 
 
 class Task(models.Model):
+    id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     start_date = models.DateField(blank=True, null=False)
