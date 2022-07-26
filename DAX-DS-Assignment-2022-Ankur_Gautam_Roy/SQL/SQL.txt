@@ -1,0 +1,32 @@
+/*Q1*/SELECT CustomerId,
+       FirstName,
+       LastName,
+       City
+  FROM customers
+ WHERE FirstName LIKE "N%" OR 
+       City = "Prague";
+
+/*Q2*/SELECT TrackId,
+       Name,
+       Composer,
+       UnitPrice
+  FROM tracks
+ WHERE UnitPrice BETWEEN 0.99 AND 1.0 AND 
+       Composer NOT LIKE "%T%";
+       
+-- Group BY and order BY:
+
+/*Q1*/SELECT InvoiceDate,
+       sum(Total) AS "Sum of total invoices of JUNE2012",
+       avg(Total) AS "Average of total invoices of JUNE2012"
+  FROM invoices
+ WHERE InvoiceDate LIKE "2012-06%" group by InvoiceDate;
+
+/*Q2*/SELECT TrackId, count(Quantity) AS "Total_quantity" FROM invoice_items group by TrackId ORDER BY Total_Quantity DESC;
+
+--JOIN/Subqueries:
+
+/*Q1*/ select artist.ArtistId, artist.Name from artists artist where ArtistId NOT IN (
+        select al.ArtistId from albums al inner join tracks tr on al.AlbumId = tr.AlbumId inner join playlist_track pstr on tr.TrackId = pstr.TrackId);
+
+/*Q2*/ select album.AlbumId, album.Title, count(ps.PlaylistId) from albums album inner join tracks tr on album.AlbumId = tr.AlbumId inner join playlist_track pstr ON tr.TrackId = pstr.TrackId inner join playlists ps on ps.PlaylistId = pstr.PlaylistId group by album.AlbumId, album.Title having count(ps.PlaylistId)>10;
